@@ -1,0 +1,47 @@
+<UserControl x:Class="WPFBudgetPlanner.Views.BudgetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="FrameworkElement">
+                    <Setter Property="Margin" Value="0,0,8,0" />
+                </Style>
+            </StackPanel.Resources>
+            <DatePicker SelectedDate="{Binding SelectedMonth, Mode=TwoWay}" Width="140" Language="en-US" Style="{StaticResource InputDatePicker}" />
+            <Button Content="Refresh" Padding="8 4" Click="OnRefreshClick" Style="{StaticResource PrimaryButton}" />
+        </StackPanel>
+
+        <UniformGrid Grid.Row="1" Rows="2" Columns="2" Margin="0 16 0 0" HorizontalAlignment="Stretch">
+            <Border CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16" Margin="8" Background="{StaticResource BackgroundBrush}">
+                <StackPanel>
+                    <TextBlock Text="Monthly Income" Style="{StaticResource PanelHeaderText}" Foreground="{StaticResource TextBrush}" />
+                    <TextBlock Text="{Binding MonthlyIncome, StringFormat=N2}" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,16,0,0" Foreground="{StaticResource TextBrush}" />
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16" Margin="8" Background="{StaticResource BackgroundBrush}">
+                <StackPanel>
+                    <TextBlock Text="Additional Income" Style="{StaticResource PanelHeaderText}" Foreground="{StaticResource TextBrush}" />
+                    <TextBlock Text="{Binding TotalIncome, StringFormat=N2}" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,16,0,0" Foreground="{StaticResource TextBrush}" />
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16" Margin="8" Background="{StaticResource BackgroundBrush}">
+                <StackPanel>
+                    <TextBlock Text="Total Expense" Style="{StaticResource PanelHeaderText}" Foreground="{StaticResource TextBrush}" />
+                    <TextBlock Text="{Binding TotalExpense, StringFormat=N2}" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,16,0,0" Foreground="{StaticResource TextBrush}" />
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16" Margin="8" Background="{StaticResource BackgroundBrush}">
+                <StackPanel>
+                    <TextBlock Text="Net" Style="{StaticResource PanelHeaderText}" Foreground="{StaticResource TextBrush}" />
+                    <TextBlock Text="{Binding Net, StringFormat=N2}" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,16,0,0" Foreground="{StaticResource TextBrush}" />
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

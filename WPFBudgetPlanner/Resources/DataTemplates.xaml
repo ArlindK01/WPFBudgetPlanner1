@@ -1,0 +1,64 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:WPFBudgetPlanner.VM.Overview"
+                    xmlns:txvm="clr-namespace:WPFBudgetPlanner.VM.Transactions"
+                    xmlns:views="clr-namespace:WPFBudgetPlanner.Views"
+                    xmlns:models="clr-namespace:WPFBudgetPlanner.Models">
+    <DataTemplate DataType="{x:Type vm:BudgetViewModel}">
+        <views:BudgetView DataContext="{Binding}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type txvm:BudgetTransactionListViewModel}">
+        <views:TransactionsView DataContext="{Binding}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="CategoryItemTemplate">
+        <TextBlock>
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="{Binding}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Salary}"><Setter Property="Text" Value="Salary" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Food}"><Setter Property="Text" Value="Food" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Transport}"><Setter Property="Text" Value="Transport" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.HousingAndUtilities}"><Setter Property="Text" Value="Housing &amp; Utilities" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Leisure}"><Setter Property="Text" Value="Leisure" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Children}"><Setter Property="Text" Value="Children" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.StreamingServices}"><Setter Property="Text" Value="Streaming Services" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.SaaS}"><Setter Property="Text" Value="SaaS" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Benefit}"><Setter Property="Text" Value="Benefit" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:Category.Hobby}"><Setter Property="Text" Value="Hobby" /></DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RecurrenceItemTemplate">
+        <TextBlock>
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="{Binding}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:RecurrenceType.None}"><Setter Property="Text" Value="None" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:RecurrenceType.Monthly}"><Setter Property="Text" Value="Monthly" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:RecurrenceType.Yearly}"><Setter Property="Text" Value="Yearly" /></DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TransactionTypeItemTemplate">
+        <TextBlock>
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="{Binding}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:TransactionType.Income}"><Setter Property="Text" Value="Income" /></DataTrigger>
+                        <DataTrigger Binding="{Binding}" Value="{x:Static models:TransactionType.Expense}"><Setter Property="Text" Value="Expense" /></DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </DataTemplate>
+</ResourceDictionary>
