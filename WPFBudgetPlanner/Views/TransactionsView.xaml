@@ -78,7 +78,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock x:Name="AmountDisplay" Text="{Binding Amount, StringFormat=N2}" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="AmountDisplay" Text="{Binding Amount, StringFormat=N0}" VerticalAlignment="Center" />
                                     <TextBox x:Name="AmountEdit" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Visibility="Collapsed" />
                                 </Grid>
                                 <DataTemplate.Triggers>

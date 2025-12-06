@@ -19,9 +19,9 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Annual Income:" VerticalAlignment="Center" />
-                <TextBox Grid.Column="1" Text="{Binding AnnualIncome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputTextBox}" />
+                <TextBox Grid.Column="1" Text="{Binding AnnualIncome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}" Style="{StaticResource InputTextBox}" />
                 <TextBlock Grid.Column="2" Margin="16 0 0 0" Text="Work hours/year:" VerticalAlignment="Center" />
-                <TextBox Grid.Column="3" Text="{Binding AnnualWorkHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputTextBox}" />
+                <TextBox Grid.Column="3" Text="{Binding AnnualWorkHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}" Style="{StaticResource InputTextBox}" />
                 <TextBlock Grid.Column="4" Margin="16 0 0 0" Text="Currency:" VerticalAlignment="Center" />
                 <TextBox Grid.Column="5" Text="{Binding Currency, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputTextBox}" />
                 <Button Grid.Column="6" Content="Save" Width="80" Margin="16 0 0 0" Click="OnSaveSettingsClick" Style="{StaticResource PrimaryButton}" />

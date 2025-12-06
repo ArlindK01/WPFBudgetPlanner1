@@ -31,7 +31,8 @@
     </Style>
 
     <Style TargetType="TextBlock" x:Key="AmountText">
-        <Setter Property="Text" Value="{Binding Amount, StringFormat=N2}" />
+        <!-- Format amounts without decimals -->
+        <Setter Property="Text" Value="{Binding Amount, StringFormat=N0}" />
         <Setter Property="TextAlignment" Value="Right" />
     </Style>
     <Style TargetType="TextBlock" x:Key="DateText">
