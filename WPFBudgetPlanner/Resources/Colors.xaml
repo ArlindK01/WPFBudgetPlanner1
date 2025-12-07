@@ -8,10 +8,44 @@
     <Color x:Key="MutedTextColor">#666666</Color>
     <Color x:Key="BackgroundColor">#FFFFFFFF</Color>
 
+    <Color x:Key="IncomeColor">#228B22</Color>
+    <Color x:Key="ExpenseColor">#B71C1C</Color>
+    <Color x:Key="NetColor">#1565C0</Color>
+    <Color x:Key="RefreshButtonColor">#1E90FF</Color>
+    <Color x:Key="SaveButtonColor">#4CAF50</Color>
+    <Color x:Key="InputBackgroundColor">#E3F2FD</Color>
+    <Color x:Key="InputBorderColor">#90CAF9</Color>
+    <Color x:Key="InputTextColor">#0D47A1</Color>
+    <Color x:Key="ListHeaderBackgroundColor">#E8EDFF</Color>
+    <Color x:Key="ListHeaderTextColor">#2C3E50</Color>
+    
+    <Color x:Key="ActionButtonColor">#A7CBEF</Color>
+    <Color x:Key="ActionButtonHoverColor">#8EBBE6</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
     <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
     <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}" />
     <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
     <SolidColorBrush x:Key="MutedTextBrush" Color="{StaticResource MutedTextColor}" />
     <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
+
+    <SolidColorBrush x:Key="IncomeBrush" Color="{StaticResource IncomeColor}" />
+    <SolidColorBrush x:Key="ExpenseBrush" Color="{StaticResource ExpenseColor}" />
+    <SolidColorBrush x:Key="NetBrush" Color="{StaticResource NetColor}" />
+    <SolidColorBrush x:Key="RefreshButtonBrush" Color="{StaticResource RefreshButtonColor}" />
+    <SolidColorBrush x:Key="SaveButtonBrush" Color="{StaticResource SaveButtonColor}" />
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="{StaticResource InputBackgroundColor}" />
+    <SolidColorBrush x:Key="InputBorderBrush" Color="{StaticResource InputBorderColor}" />
+    <SolidColorBrush x:Key="InputTextBrush" Color="{StaticResource InputTextColor}" />
+    <SolidColorBrush x:Key="ListHeaderBackgroundBrush" Color="{StaticResource ListHeaderBackgroundColor}" />
+    <SolidColorBrush x:Key="ListHeaderTextBrush" Color="{StaticResource ListHeaderTextColor}" />
+    <SolidColorBrush x:Key="ActionButtonBrush" Color="{StaticResource ActionButtonColor}" />
+    <SolidColorBrush x:Key="ActionButtonHoverBrush" Color="{StaticResource ActionButtonHoverColor}" />
+
+    <SolidColorBrush x:Key="TabTextBrush" Color="#2C3E50" />
+    <SolidColorBrush x:Key="TabSelectedTextBrush" Color="#0D47A1" />
+    <SolidColorBrush x:Key="TabBackgroundBrush" Color="#F8FAFF" />
+    <SolidColorBrush x:Key="TabBorderBrush" Color="#CCD6EB" />
+    <SolidColorBrush x:Key="TabSelectedBackgroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TabHoverBackgroundBrush" Color="#EEF3FF" />
 </ResourceDictionary>

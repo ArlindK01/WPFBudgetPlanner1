@@ -21,8 +21,8 @@
         <x:Array x:Key="MonthValues" Type="sys:Int32" xmlns:sys="clr-namespace:System;assembly=mscorlib">
             <sys:Int32>1</sys:Int32><sys:Int32>2</sys:Int32><sys:Int32>3</sys:Int32><sys:Int32>4</sys:Int32><sys:Int32>5</sys:Int32><sys:Int32>6</sys:Int32><sys:Int32>7</sys:Int32><sys:Int32>8</sys:Int32><sys:Int32>9</sys:Int32><sys:Int32>10</sys:Int32><sys:Int32>11</sys:Int32><sys:Int32>12</sys:Int32>
         </x:Array>
-        <Style TargetType="TextBox" x:Key="TopInputTextBox" BasedOn="{StaticResource InputTextBox}" />
-        <Style TargetType="ComboBox" x:Key="TopInputComboBox" BasedOn="{StaticResource InputComboBox}" />
+        <Style TargetType="TextBox" x:Key="TopInputTextBox" BasedOn="{StaticResource TopInputTextBox}" />
+        <Style TargetType="ComboBox" x:Key="TopInputComboBox" BasedOn="{StaticResource TopInputComboBox}" />
     </UserControl.Resources>
 
     <Grid Margin="12">
@@ -57,11 +57,11 @@
             </StackPanel>
             <StackPanel Grid.Column="3">
                 <TextBlock Text="Recurrence" FontSize="12" Margin="0,0,0,4" />
-                <ComboBox Style="{StaticResource TopInputComboBox}" ItemsSource="{Binding Source={StaticResource RecurrenceTypeValues}}" SelectedItem="{Binding NewRecurrenceType, Mode=TwoWay}" ItemTemplate="{StaticResource RecurrenceItemTemplate}" />
+                <ComboBox Style="{StaticResource TopRecurrenceComboStyle}" ItemsSource="{Binding Source={StaticResource RecurrenceTypeValues}}" SelectedItem="{Binding NewRecurrenceType, Mode=TwoWay}" ItemTemplate="{StaticResource RecurrenceItemTemplate}" />
             </StackPanel>
             <StackPanel Grid.Column="4">
                 <TextBlock Text="Month" FontSize="12" Margin="0,0,0,4" />
-                <ComboBox Style="{StaticResource TopInputComboBox}" ItemsSource="{StaticResource MonthValues}" SelectedItem="{Binding NewRecurrenceMonth, Mode=TwoWay}" />
+                <ComboBox Style="{StaticResource TopMonthComboStyle}" ItemsSource="{StaticResource MonthValues}" SelectedItem="{Binding NewRecurrenceMonth, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Grid.Column="5" Orientation="Vertical" VerticalAlignment="Bottom">
                 <Button Content="Income" Width="110" Height="28" Command="{Binding AddIncomeCommand}" Style="{StaticResource IncomeButtonStyle}" />
@@ -71,14 +71,14 @@
             </StackPanel>
         </Grid>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" BorderThickness="1" BorderBrush="{StaticResource BorderBrush}">
+        <ListView Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" BorderThickness="1" BorderBrush="{StaticResource BorderBrush}" Style="{StaticResource TransactionsListView}">
             <ListView.View>
                 <GridView AllowsColumnReorder="false">
                     <GridViewColumn Header="Amount" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock x:Name="AmountDisplay" Text="{Binding Amount, StringFormat=N0}" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="AmountDisplay" Text="{Binding Amount, StringFormat=N0}" VerticalAlignment="Center" Style="{StaticResource AmountCellText}" />
                                     <TextBox x:Name="AmountEdit" Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Visibility="Collapsed" />
                                 </Grid>
                                 <DataTemplate.Triggers>
@@ -203,10 +203,10 @@
         </ListView>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Left">
-            <Button Content="Edit" Command="{Binding EditSelectedCommand}" Width="90" />
-            <Button Content="Save" Command="{Binding SaveEditCommand}" Width="90" Margin="8 0 0 0" />
-            <Button Content="Cancel" Command="{Binding CancelEditCommand}" Width="90" Margin="8 0 0 0" />
-            <Button Content="Delete" Command="{Binding DeleteSelectedCommand}" Width="90" Margin="8 0 0 0" />
+            <Button Content="Edit" Command="{Binding EditSelectedCommand}" Width="90" Style="{StaticResource ActionButton}" />
+            <Button Content="Save" Command="{Binding SaveEditCommand}" Width="90" Margin="8 0 0 0" Style="{StaticResource ActionButton}" />
+            <Button Content="Cancel" Command="{Binding CancelEditCommand}" Width="90" Margin="8 0 0 0" Style="{StaticResource ActionButton}" />
+            <Button Content="Delete" Command="{Binding DeleteSelectedCommand}" Width="90" Margin="8 0 0 0" Style="{StaticResource ActionButton}" />
         </StackPanel>
     </Grid>
 </UserControl>

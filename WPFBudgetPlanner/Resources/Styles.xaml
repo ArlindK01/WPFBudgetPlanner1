@@ -30,8 +30,12 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
 
+    <Style TargetType="Button" x:Key="RefreshButtonStyle" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Background" Value="{StaticResource RefreshButtonBrush}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
     <Style TargetType="TextBlock" x:Key="AmountText">
-        <!-- Format amounts without decimals -->
         <Setter Property="Text" Value="{Binding Amount, StringFormat=N0}" />
         <Setter Property="TextAlignment" Value="Right" />
     </Style>
@@ -70,5 +74,86 @@
                 <Setter Property="IsEnabled" Value="False" />
             </DataTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="TopInputTextBox" BasedOn="{StaticResource InputTextBox}">
+        <Setter Property="Background" Value="{StaticResource InputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource InputTextBrush}" />
+    </Style>
+    <Style TargetType="ComboBox" x:Key="TopInputComboBox" BasedOn="{StaticResource InputComboBox}">
+        <Setter Property="Background" Value="{StaticResource InputBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource InputTextBrush}" />
+    </Style>
+    <Style TargetType="ListView" x:Key="TransactionsListView">
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+        <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+    </Style>
+    <Style TargetType="GridViewColumnHeader">
+        <Setter Property="Background" Value="{StaticResource ListHeaderBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ListHeaderTextBrush}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="6" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="AmountCellText">
+        <Setter Property="Foreground" Value="{StaticResource IncomeBrush}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TransactionType}" Value="{x:Static models:TransactionType.Expense}">
+                <Setter Property="Foreground" Value="{StaticResource ExpenseBrush}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="ActionButton" BasedOn="{StaticResource PrimaryButton}">
+        <Setter Property="Foreground" Value="#0D47A1" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource ActionButtonHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ActionRadioButton" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="#0D47A1" />
+        <Setter Property="Background" Value="{StaticResource ActionButtonBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border x:Name="root" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource ActionButtonHoverBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="root" Property="Background" Value="{StaticResource ActionButtonHoverBrush}" />
+                            <Setter TargetName="root" Property="BorderBrush" Value="{StaticResource PrimaryBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

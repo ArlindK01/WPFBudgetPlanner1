@@ -6,38 +6,82 @@
         xmlns:local="clr-namespace:WPFBudgetPlanner"
         mc:Ignorable="d"
         Title="Budget Planner" Height="600" Width="1100" MinWidth="900" MinHeight="500">
-    <TabControl Margin="8">
-        <TabItem Header="Budget">
-            <ContentControl Content="{Binding Budget}" />
-        </TabItem>
-        <TabItem Header="Transactions">
-            <ContentControl Content="{Binding Transactions}" />
-        </TabItem>
-        <TabItem Header="Settings">
-            <Grid Margin="8" DataContext="{Binding Budget}">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,8">
+            <RadioButton x:Name="BtnBudget" Content="Budget" Style="{StaticResource ActionRadioButton}" GroupName="TopNav" IsChecked="True" />
+            <RadioButton x:Name="BtnTransactions" Content="Transactions" Style="{StaticResource ActionRadioButton}" GroupName="TopNav" Margin="8,0,0,0" />
+            <RadioButton x:Name="BtnSettings" Content="Settings" Style="{StaticResource ActionRadioButton}" GroupName="TopNav" Margin="8,0,0,0" />
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <ContentControl x:Name="BudgetContent" Content="{Binding Budget}">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=BtnBudget}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+
+            <ContentControl x:Name="TransactionsContent" Content="{Binding Transactions}">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=BtnTransactions}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+
+            <Grid x:Name="SettingsContent" Margin="8" DataContext="{Binding Budget}">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=BtnSettings}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Border HorizontalAlignment="Center" VerticalAlignment="Top" Padding="28" CornerRadius="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="0,24,0,0" Background="{StaticResource BackgroundBrush}">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Top" Padding="28" CornerRadius="10" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="0,24,0,0" Background="{StaticResource BackgroundBrush}">
                     <StackPanel Width="380" HorizontalAlignment="Center">
                         <TextBlock Text="User Settings" FontWeight="Bold" FontSize="20" Margin="0 0 0 16" HorizontalAlignment="Center" Foreground="{StaticResource TextBrush}" />
 
                         <StackPanel Margin="0 10 0 0">
                             <TextBlock Text="Annual Income (SEK)" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 6" HorizontalAlignment="Center" Foreground="{StaticResource MutedTextBrush}" />
-                            <TextBox Text="{Binding AnnualIncome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}"
-                                     Width="220" Height="34" FontSize="18" HorizontalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource InputTextBox}" />
+                            <TextBox Text="{Binding AnnualIncome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}"
+                                     Width="220" Height="34" FontSize="18" HorizontalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource InputTextBox}"
+                                     Background="{StaticResource InputBackgroundBrush}" BorderBrush="{StaticResource InputBorderBrush}" Foreground="{StaticResource InputTextBrush}" />
                         </StackPanel>
 
                         <StackPanel Margin="0 16 0 0">
                             <TextBlock Text="Work hours/year" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 6" HorizontalAlignment="Center" Foreground="{StaticResource MutedTextBrush}" />
-                            <TextBox Text="{Binding AnnualWorkHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     Width="220" Height="34" FontSize="18" HorizontalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource InputTextBox}" />
+                            <TextBox Text="{Binding AnnualWorkHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}"
+                                     Width="220" Height="34" FontSize="18" HorizontalAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource InputTextBox}"
+                                     Background="{StaticResource InputBackgroundBrush}" BorderBrush="{StaticResource InputBorderBrush}" Foreground="{StaticResource InputTextBrush}" />
                         </StackPanel>
 
-                        <Button Content="Save" Width="140" Height="36" Margin="0 20 0 0" HorizontalAlignment="Center" Click="OnSettingsSaveClick" Style="{StaticResource PrimaryButton}" />
+                        <Button Content="Save" Width="140" Height="36" Margin="0 20 0 0" HorizontalAlignment="Center" Click="OnSettingsSaveClick" Style="{StaticResource PrimaryButton}"
+                                Background="{StaticResource SaveButtonBrush}" Foreground="White" />
                     </StackPanel>
                 </Border>
             </Grid>
-        </TabItem>
-    </TabControl>
+        </Grid>
+    </Grid>
 </Window>
